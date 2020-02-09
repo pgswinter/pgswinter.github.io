@@ -29,22 +29,23 @@ function getDataFromCache() {
 }
 
 function updateData() {
-  getDataFromCache().then(data => {
-    if (data) {
-      renderData(data);
+  getDataFromCache().then(dataCache => {
+    if (dataCache) {
+      if (getDataFromNetwork() !== null) {
+        getDataFromCache().then(dataNetwork => {
+          if(JSON.stringify(dataCache) === JSON.stringify(dataNetwork)) {
+            renderData(dataCache);
+          } else {
+            renderData(dataNetwork)
+          }
+        })
+      } else {
+        renderData(dataCache);
+      }
     } else {
-      console.log(`Data is loading from NETWORK`);
+      console.log(`Data cache is empty`);
     }
   });
-  if (getDataFromNetwork() !== null) {
-    getDataFromNetwork().then(data => {
-      if (data) {
-        renderData(data);
-      } else {
-        console.log(`Data is loading from CACHES`);
-      }
-    });
-  }
 }
 
 function renderData(data) {
