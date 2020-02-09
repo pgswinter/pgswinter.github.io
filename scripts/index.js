@@ -30,10 +30,18 @@ function getDataFromCache() {
 
 function updateData() {
   getDataFromCache().then(data => {
-    renderData(data);
+    if(data) {
+      renderData(data);
+    } else {
+      console.log(`Data is loading from NETWORK`);
+    }
   });
   getDataFromNetwork().then(data => {
-    renderData(data);
+    if(data) {
+      renderData(data);
+    } else {
+      console.log(`Data is loading from CACHES`);
+    }
   });
 }
 
@@ -45,15 +53,14 @@ function renderData(data) {
   const displayApi = document.createElement('p');
   const dataLastUpdated = JSON.stringify(displayApi.textContent);
   const textNode = document.createTextNode(JSON.stringify(data));
-  
+  const addToBody = displayApi.appendChild(textNode);
   console.log(`dataLastUpdated: `, dataLastUpdated);
   console.log(`JSON.stringify(data): `, JSON.stringify(data));
-  // If the data on the element is newer, skip the update.
-  if(dataLastUpdated !== JSON.stringify(data)) {
-    displayApi.appendChild(textNode);
-    document.body.appendChild(displayApi);
-  }
-  return;
+  // TODO: ADD current time to data
+  // if(dataLastUpdated === JSON.stringify(data)) {
+  //   return;  
+  // }
+  document.body.appendChild(addToBody);
 }
 
 function init() {
