@@ -1,3 +1,64 @@
+function getDataFromNetwork() {
+  const url = `https://simple-api-online.herokuapp.com/api`;
+  return fetch(url)
+    .then(response => {
+      return response.json();
+    })
+    .catch(() => {
+      return null;
+    });
+}
+
+function getDataFromCache() {
+  if (!("caches" in window)) {
+    return null;
+  }
+  const url = `https://simple-api-online.herokuapp.com/api`;
+  return caches
+    .match(url)
+    .then(response => {
+      if (response) {
+        return response.json();
+      }
+      return null;
+    })
+    .catch(err => {
+      console.error("Error getting data from cache", err);
+      return null;
+    });
+}
+
+function updateData() {
+  getDataFromCache().then(data => {
+    renderData(data);
+  });
+  getDataFromNetwork().then(res => {
+    renderData(data);
+  });
+}
+
+function renderData(data) {
+  if (!data) {
+    // There's no data, skip the update.
+    return;
+  }
+  const displayApi = document.querySelector('.display-api');
+  const dataLastUpdated = displayApi.textContent;
+  const lastUpdated = parseInt(dataLastUpdated);
+
+  // If the data on the element is newer, skip the update.
+  if(lastUpdated !== parseInt(data)) {
+    return;
+  }
+  displayApi.textContent = data;
+}
+
+function init() {
+  updateData();
+}
+
+init();
+
 window.addEventListener("beforeinstallprompt", e => {
   // Prevent Chrome 76 and later from showing the mini-infobar
   e.preventDefault();
