@@ -43,18 +43,16 @@ function renderData(data) {
     return;
   }
   const displayApi = document.querySelector('.display-api');
-  console.log(`displayApi: `,lastUpdated);
+  console.log(`displayApi: `,displayApi);
   const dataLastUpdated = displayApi.textContent;
   const lastUpdated = parseInt(dataLastUpdated);
   console.log(`lastUpdated: `, lastUpdated);
   console.log(`parseInt(data): `, parseInt(data));
   // If the data on the element is newer, skip the update.
   if(lastUpdated !== parseInt(data)) {
-    return;
+    displayApi.appendChild(data)
   }
-  
-  displayApi.appendChild(data)
-  
+  return;  
 }
 
 function init() {
