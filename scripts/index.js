@@ -42,7 +42,7 @@ function renderData(data) {
     // There's no data, skip the update.
     return;
   }
-  const displayApi = document.querySelector('.display-api');
+  const displayApi = document.getElementsByClassName('.display-api');
   const dataLastUpdated = displayApi.textContent;
   
   console.log(`dataLastUpdated: `, dataLastUpdated);
