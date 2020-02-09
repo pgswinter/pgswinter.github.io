@@ -1,6 +1,7 @@
 function getDataFromNetwork() {
-  console.log("caches" in window);
-  
+  if("caches" in window) {
+    return null;
+  }
   const url = `https://simple-api-online.herokuapp.com/api`;
   return fetch(url)
     .then(response => {
