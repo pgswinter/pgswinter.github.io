@@ -43,12 +43,13 @@ function renderData(data) {
     return;
   }
   const displayApi = document.createElement('p');
-  const dataLastUpdated = displayApi.textContent;
+  const dataLastUpdated = JSON.stringify(displayApi.textContent);
+  const textNode = document.createTextNode(JSON.stringify(data));
   
   console.log(`dataLastUpdated: `, dataLastUpdated);
   // If the data on the element is newer, skip the update.
-  if(JSON.stringify(dataLastUpdated) !== JSON.stringify(data)) {
-    displayApi.appendChild(data);
+  if(dataLastUpdated !== JSON.stringify(data)) {
+    displayApi.appendChild(textNode);
   }
   return;
 }
