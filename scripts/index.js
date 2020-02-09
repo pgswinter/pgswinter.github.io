@@ -46,7 +46,8 @@ function renderData(data) {
   console.log(`displayApi: `,displayApi);
   const dataLastUpdated = displayApi.textContent;
   const lastUpdated = parseInt(dataLastUpdated);
-  console.log(`data: `,data.posts[0].author);
+  console.log(`data: `,data.posts && data.posts[0] && data.posts[0].author);
+  console.log(`data: `,data.data.posts[0].author);
   
   console.log(`lastUpdated: `, lastUpdated);
   console.log(`parseInt(data): `, parseInt(data));
