@@ -13,6 +13,7 @@ function saveBeforeInstallPromptEvent(evt) {
 }
 
 function installPWA(evt) {
+    deferredInstallPrompt = evt;
   // CODELAB: Add code show install prompt & hide the install button.
   deferredInstallPrompt.prompt();
   // Hide the install button, it can't be called twice.
