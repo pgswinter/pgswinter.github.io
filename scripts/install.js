@@ -1,13 +1,23 @@
 let deferredPrompt;
 
 window.addEventListener("beforeinstallprompt", e => {
-  // Stash the event so it can be triggered later.
-  deferredPrompt = e;
-  // Update UI notify the user they can add to home screen
-  showInstallPromotion();
+  if (deferredPrompt) {
+    // Stash the event so it can be triggered later.
+    deferredPrompt = e;
+    // Update UI notify the user they can add to home screen
+    showInstallPromotion();
+  }
 });
 
-const btnAdd = document.getElementById("btnAdd");
+window.addEventListener("appinstalled", evt => {
+  console.log("a2hs installed");
+});
+
+if (window.navigator.standalone === true) {
+  console.log("display-mode is standalone");
+}
+
+const btnAdd = document.getEl(".btnAdd");
 
 btnAdd.addEventListener("click", e => {
   // hide our user interface that shows our A2HS button
@@ -24,14 +34,6 @@ btnAdd.addEventListener("click", e => {
     deferredPrompt = null;
   });
 });
-
-window.addEventListener("appinstalled", evt => {
-  console.log("a2hs installed");
-});
-
-if (window.navigator.standalone === true) {
-  console.log("display-mode is standalone");
-}
 
 // let deferredInstallPrompt = null;
 // const installButton = document.getElementById("btnAdd");
