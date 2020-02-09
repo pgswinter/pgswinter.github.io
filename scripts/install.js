@@ -15,8 +15,14 @@ btnAdd.addEventListener("click", e => {
     deferredPrompt.userChoice.then(choiceResult => {
       if (choiceResult.outcome === "accepted") {
         console.log("User accepted the A2HS prompt");
+      } else {
+        console.log("User dismissed the A2HS prompt");
       }
       deferredPrompt = null;
     });
   }
+});
+
+window.addEventListener("appinstalled", evt => {
+  console.log("a2hs installed");
 });
