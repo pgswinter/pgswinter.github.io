@@ -15,7 +15,7 @@ if (window.navigator.standalone === true) {
   console.log("display-mode is standalone");
 }
 
-const btnAdd = document.getEl(".btnAdd");
+const btnAdd = document.getElementById("btnAdd");
 
 btnAdd.addEventListener("click", e => {
   // hide our user interface that shows our A2HS button
