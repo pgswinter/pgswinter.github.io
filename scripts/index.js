@@ -43,19 +43,14 @@ function renderData(data) {
     return;
   }
   const displayApi = document.querySelector('.display-api');
-  console.log(`displayApi: `,displayApi);
   const dataLastUpdated = displayApi.textContent;
-  const lastUpdated = parseInt(dataLastUpdated);
-  console.log(`data: `,data.posts && data.posts[0] && data.posts[0].author);
-  console.log(`data: `,data.data.posts[0].author);
   
-  console.log(`lastUpdated: `, lastUpdated);
-  console.log(`parseInt(data): `, parseInt(data));
+  console.log(`dataLastUpdated: `, dataLastUpdated);
   // If the data on the element is newer, skip the update.
-  if(lastUpdated !== parseInt(data)) {
-    return;    
+  if(JSON.stringify(dataLastUpdated) !== JSON.stringify(data)) {
+    displayApi.appendChild(data.data.posts[0].author);
   }
-  displayApi.appendChild(data)
+  return;
 }
 
 function init() {
