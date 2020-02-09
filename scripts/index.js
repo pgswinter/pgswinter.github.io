@@ -1,16 +1,12 @@
 function getDataFromNetwork() {
-  if ("caches" in window) {
-    return null;
-  } else {
-    const url = `https://simple-api-online.herokuapp.com/api`;
-    return fetch(url)
-      .then(response => {
-        return response.json();
-      })
-      .catch(() => {
-        return null;
-      });
-  }
+  const url = `https://simple-api-online.herokuapp.com/api`;
+  return fetch(url)
+    .then(response => {
+      return response.json();
+    })
+    .catch(() => {
+      return null;
+    });
 }
 
 function getDataFromCache() {
