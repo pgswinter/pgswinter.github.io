@@ -30,6 +30,7 @@ function getDataFromCache() {
 
 function updateData() {
   getDataFromCache().then(dataCache => {
+    console.log(dataCache)
     if (dataCache) {
       if (getDataFromNetwork() !== null) {
         getDataFromCache().then(dataNetwork => {
