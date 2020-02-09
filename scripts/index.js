@@ -1,15 +1,16 @@
 function getDataFromNetwork() {
-  if("caches" in window) {
+  if ("caches" in window) {
     return null;
+  } else {
+    const url = `https://simple-api-online.herokuapp.com/api`;
+    return fetch(url)
+      .then(response => {
+        return response.json();
+      })
+      .catch(() => {
+        return null;
+      });
   }
-  const url = `https://simple-api-online.herokuapp.com/api`;
-  return fetch(url)
-    .then(response => {
-      return response.json();
-    })
-    .catch(() => {
-      return null;
-    });
 }
 
 function getDataFromCache() {
@@ -33,14 +34,14 @@ function getDataFromCache() {
 
 function updateData() {
   getDataFromCache().then(data => {
-    if(data) {
+    if (data) {
       renderData(data);
     } else {
       console.log(`Data is loading from NETWORK`);
     }
   });
   getDataFromNetwork().then(data => {
-    if(data) {
+    if (data) {
       renderData(data);
     } else {
       console.log(`Data is loading from CACHES`);
@@ -53,7 +54,7 @@ function renderData(data) {
     // There's no data, skip the update.
     return;
   }
-  const displayApi = document.createElement('p');
+  const displayApi = document.createElement("p");
   const dataLastUpdated = JSON.stringify(displayApi.textContent);
   const textNode = document.createTextNode(JSON.stringify(data));
   const addToBody = displayApi.appendChild(textNode);
@@ -61,7 +62,7 @@ function renderData(data) {
   console.log(`JSON.stringify(data): `, JSON.stringify(data));
   // TODO: ADD current time to data
   // if(dataLastUpdated === JSON.stringify(data)) {
-  //   return;  
+  //   return;
   // }
   document.body.appendChild(addToBody);
 }
