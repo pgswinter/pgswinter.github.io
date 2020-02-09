@@ -30,11 +30,9 @@ function getDataFromCache() {
 
 function updateData() {
   getDataFromCache().then(data => {
-    console.log(`data in cache:`, data);
     renderData(data);
   });
   getDataFromNetwork().then(data => {
-    console.log(`data in network:`, data);
     renderData(data);
   });
 }
@@ -52,7 +50,8 @@ function renderData(data) {
   if(lastUpdated !== parseInt(data)) {
     return;
   }
-  displayApi.textContent = data;
+  displayApi.appendChild(data)
+  
 }
 
 function init() {
