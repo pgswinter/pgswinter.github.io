@@ -42,13 +42,13 @@ function renderData(data) {
     // There's no data, skip the update.
     return;
   }
-  const displayApi = document.getElementsByClassName('.display-api');
+  const displayApi = document.createElement('p');
   const dataLastUpdated = displayApi.textContent;
   
   console.log(`dataLastUpdated: `, dataLastUpdated);
   // If the data on the element is newer, skip the update.
   if(JSON.stringify(dataLastUpdated) !== JSON.stringify(data)) {
-    displayApi.appendChild(data.data.posts[0].author);
+    displayApi.appendChild(data);
   }
   return;
 }
