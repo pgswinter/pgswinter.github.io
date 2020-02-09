@@ -32,7 +32,7 @@ function updateData() {
   getDataFromCache().then(data => {
     renderData(data);
   });
-  getDataFromNetwork().then(res => {
+  getDataFromNetwork().then(data => {
     renderData(data);
   });
 }
