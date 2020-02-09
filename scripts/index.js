@@ -40,13 +40,15 @@ function updateData() {
       console.log(`Data is loading from NETWORK`);
     }
   });
-  getDataFromNetwork().then(data => {
-    if (data) {
-      renderData(data);
-    } else {
-      console.log(`Data is loading from CACHES`);
-    }
-  });
+  if (getDataFromNetwork() !== null) {
+    getDataFromNetwork().then(data => {
+      if (data) {
+        renderData(data);
+      } else {
+        console.log(`Data is loading from CACHES`);
+      }
+    });
+  }
 }
 
 function renderData(data) {
@@ -58,8 +60,6 @@ function renderData(data) {
   const dataLastUpdated = JSON.stringify(displayApi.textContent);
   const textNode = document.createTextNode(JSON.stringify(data));
   const addToBody = displayApi.appendChild(textNode);
-  console.log(`dataLastUpdated: `, dataLastUpdated);
-  console.log(`JSON.stringify(data): `, JSON.stringify(data));
   // TODO: ADD current time to data
   // if(dataLastUpdated === JSON.stringify(data)) {
   //   return;
