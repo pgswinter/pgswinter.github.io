@@ -30,9 +30,11 @@ function getDataFromCache() {
 
 function updateData() {
   getDataFromCache().then(data => {
+    console.log(`data in cache:`, cache);
     renderData(data);
   });
   getDataFromNetwork().then(data => {
+    console.log(`data in network:`, cache);
     renderData(data);
   });
 }
