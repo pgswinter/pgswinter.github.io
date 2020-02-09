@@ -46,15 +46,15 @@ function renderData(data) {
   console.log(`displayApi: `,displayApi);
   const dataLastUpdated = displayApi.textContent;
   const lastUpdated = parseInt(dataLastUpdated);
-  console.log(`data: `,data);
+  console.log(`data: `,data.posts[0].author);
   
   console.log(`lastUpdated: `, lastUpdated);
   console.log(`parseInt(data): `, parseInt(data));
   // If the data on the element is newer, skip the update.
   if(lastUpdated !== parseInt(data)) {
-    displayApi.appendChild(data)
+    return;    
   }
-  return;  
+  displayApi.appendChild(data)
 }
 
 function init() {
