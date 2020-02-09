@@ -51,6 +51,7 @@ function renderData(data) {
   // If the data on the element is newer, skip the update.
   if(dataLastUpdated !== JSON.stringify(data)) {
     displayApi.appendChild(textNode);
+    document.body.appendChild(displayApi);
   }
   return;
 }
