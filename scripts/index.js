@@ -47,6 +47,7 @@ function renderData(data) {
   const textNode = document.createTextNode(JSON.stringify(data));
   
   console.log(`dataLastUpdated: `, dataLastUpdated);
+  console.log(`JSON.stringify(data): `, JSON.stringify(data));
   // If the data on the element is newer, skip the update.
   if(dataLastUpdated !== JSON.stringify(data)) {
     displayApi.appendChild(textNode);
