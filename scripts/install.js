@@ -1,26 +1,39 @@
-let promptEvent;
+let deferredInstallPrompt = null;
+const installButton = document.getElementsByClassName("btnAdd");
+installButton.addEventListener("click", installPWA);
 
-// Capture event and defer
-window.addEventListener("beforeinstallprompt", function(e) {
-  e.preventDefault();
-  promptEvent = e;
-  listenToUserAction();
-});
+window.addEventListener("beforeinstallprompt", saveBeforeInstallPromptEvent);
 
-// listen to install button clic
-function listenToUserAction() {
-  const installBtn = document.querySelector(".btnAdd");
-  installBtn.addEventListener("click", presentAddToHome);
+function saveBeforeInstallPromptEvent(evt) {
+  deferredInstallPrompt = evt;
+  installButton.removeAttribute("hidden");
 }
 
-// present install prompt to user
-function presentAddToHome() {
-  promptEvent.prompt(); // Wait for the user to respond to the prompt
-  promptEvent.userChoice.then(choice => {
-    if (choice.outcome === "accepted") {
-      console.log("User accepted");
-    } else {
-      console.log("User dismissed");
-    }
-  });
+function installPWA(evt) {
+  if (deferredInstallPrompt) {
+    deferredInstallPrompt.prompt();
+    evt.srcElement.setAttribute("hidden", true);
+    deferredInstallPrompt.userChoice.then(choice => {
+      if (choice.outcome === "accepted") {
+        console.log("User accepted the A2HS prompt", choice);
+      } else {
+        console.log("User dismissed the A2HS prompt", choice);
+      }
+      deferredInstallPrompt = null;
+    });
+    deferredInstallPrompt.userChoice.then(choice => {
+      if (choice.outcome === "accepted") {
+        console.log("User accepted the A2HS prompt", choice);
+      } else {
+        console.log("User dismissed the A2HS prompt", choice);
+      }
+      deferredInstallPrompt = null;
+    });
+  }
+}
+
+window.addEventListener("appinstalled", logAppInstalled);
+
+function logAppInstalled(evt) {
+  console.log("App was installed.", evt);
 }
