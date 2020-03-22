@@ -32,53 +32,53 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/mcisg/images/tablet_login_screen.4df9aeb3f1cb9f087ec3.png"
   },
   {
-    "revision": "3e4c328dc2437b93990f",
+    "url": "app.2e4a9f99935f71611434.js"
+  },
+  {
+    "revision": "35bee597f1600417cfd2",
     "url": "app.7c739ddb1bc7ae5b208e.css"
   },
   {
-    "url": "app.e0fb59f76c3712a70307.js"
-  },
-  {
-    "revision": "2b60cf9fcc3f5a6d083824687af36a09",
+    "revision": "d346f242e9e8692a27da5c3f684539fb",
     "url": "changepassword.html"
   },
   {
-    "revision": "3dc8da47fc5996b97b6a929a17c43a15",
+    "revision": "55de91cea57ffc7d3d4d7ceffdc637c1",
     "url": "editprofile.html"
   },
   {
-    "revision": "b9263b593decf3f4300ac5eeddb2f845",
+    "revision": "ade3f03e137d8d9d162a9e35f0a46f1b",
     "url": "forgotpassword.html"
   },
   {
-    "revision": "21eacc1207289afb79d32906c038235f",
+    "revision": "03e742f85bff933a31e416c76cd6817a",
     "url": "index.html"
   },
   {
-    "revision": "08836d8b5c4526b8e86abeaa91409168",
+    "revision": "2bcbb94ba5ce2dd0fd288162f4c96825",
     "url": "legalacceptances.html"
   },
   {
-    "revision": "693245c52e9336f979f87fb47cd3e34b",
+    "revision": "7c66800970ed5d11b5b52fda09cf79e3",
     "url": "login.html"
   },
   {
-    "revision": "089badd9c135159e79105a7b6d49706b",
+    "revision": "c517985ffa86995965b5c8e3647a0e4f",
     "url": "lung/index.html"
   },
   {
-    "revision": "68a80a4bfee64bcd53acd0b184454fa9",
+    "revision": "3e1cd19baaebf90b67fa39f3590d891a",
     "url": "lung/onel-combination-therapy/index.html"
   },
   {
-    "revision": "3b2daa244031e5bee2e150cd358e788c",
+    "revision": "e323afdb1714f25eb0d698452e1dcb33",
     "url": "lung/onel-combination-therapy/study-design/index.html"
   },
   {
-    "revision": "3045337ba9658e3038f8ae5b009aa7f9",
+    "revision": "575b098bbccec9ee48e2d5a261434870",
     "url": "registration.html"
   },
   {
-    "url": "sw.e0fb59f76c3712a70307.js"
+    "url": "sw.2e4a9f99935f71611434.js"
   }
 ]);
